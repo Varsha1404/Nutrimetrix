@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Goals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="fitness-goal-container">
+        <div id="fitnessGoalForm" class="login-box">
+            <h2>Fitness Goals</h2>
+            <form id="fitness-goal-form">
+                <div class="user-box">
+                    <input type="date" id="dob" required>
+                    <label for="dob" class="field-label">Date of Birth</label>
+                </div>
+                
+                <div class="user-box">
+                    <input type="number" id="currentWeight" required>
+                    <label>Current Weight (kg)</label>
+                </div>
+                <div class="user-box">
+                    <input type="number" id="targetWeight" required>
+                    <label>Target Weight (kg)</label>
+                </div>
+                <div class="user-box">
+                    <input type="number" id="height" required>
+                    <label>Height (cm)</label>
+                </div>
+
+                <div class="user-box">
+                    <div class="gender-inputs">
+                        <h3 class="gender-radio-label" for="male">Male</h3>
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <h3 class="gender-radio-label" for="female">Female</h3>
+                        <input type="radio" id="female" name="gender" value="female" required>
+                        <label class="field-label">Gender</label>
+                    </div>
+                </div>
+                
+                <a href="#" onclick="calculateGoals()">Calculate Goals</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function calculateGoals() {
+            // Getting values from the fitness goal form
+            const currentWeight = parseFloat(document.getElementById('currentWeight').value);
+            const targetWeight = parseFloat(document.getElementById('targetWeight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const dob = new Date(document.getElementById('dob').value);
+            const selectedGender = document.querySelector('input[name="gender"]:checked').value;
+
+            if (isNaN(height) || height < 0) {
+                alert('Please enter valid height.');
+                return; 
+            }
+            if (isNaN(currentWeight) || currentWeight < 0 || targetWeight < 0) {
+                alert('Please enter valid weight.');
+                return; 
+            }
+            if (dob == 'Invalid Date') {
+                alert('Please enter valid date of birth.');
+                return; 
+            }
+
+
+            // Calculate age
+            const today = new Date();
+            const age = today.getFullYear() - dob.getFullYear();
+
+            // Calculate BMI
+            const heightInMeters = height / 100; // Converting height to meters
+            const bmi = currentWeight / (heightInMeters * heightInMeters);
+
+            // Calculate calorie intake based on selected gender
+            let calorieIntake = 0;
+
+            if (selectedGender === 'male') {
+                calorieIntake = 10 * currentWeight + 6.25 * height - 5 * age + 5; 
+            } else if (selectedGender === 'female') {
+                calorieIntake = 10 * currentWeight + 6.25 * height - 5 * age - 161; 
+            }
+
+            let caloriesToBurnPerDay = 0;
+            if (targetWeight < currentWeight) {
+                const desiredWeightLoss = currentWeight - targetWeight;
+                // Calculate total caloric deficit needed for weight loss
+                const caloriesPerPound = 3500;
+                const totalCaloricDeficit = desiredWeightLoss * caloriesPerPound;
+
+                // Calculate calories to burn per day to reach the target weight
+                const daysToReachGoal = 30; 
+                caloriesToBurnPerDay = totalCaloricDeficit / daysToReachGoal;
+            }
+
+            
+            let queryParams = `?bmi=${bmi}&age=${age}&targetWeight=${targetWeight}&currentWeight=${currentWeight}&height=${height}&calorieIntake=${calorieIntake}&selectedGender=${selectedGender}`;
+            if (!isNaN(caloriesToBurnPerDay) && caloriesToBurnPerDay > 0) {
+                queryParams += `&caloriesToBurnPerDay=${caloriesToBurnPerDay}`;
+            }
+            window.location.href = `results.html${queryParams}`;
+        }
+    </script>
+
+</body>
+</html>
+

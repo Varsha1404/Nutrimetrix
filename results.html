@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <div class="inner">
+        <nav id="nav">
+            <div class="nav__container--logo">
+                <div class="logo">Nu</div>
+                <h1>NutriMetrix</h1>
+            </div>
+        
+            <ul class="nav-links">
+                <li style="font-size: 16px;">Dashboard</li>
+                <li><a href="index.html" class="nav-link" style="font-size: 16px; color: #ffffff;">Sign Out</a></li>
+            </ul>
+        </nav>
+
+        <div class="menu">
+            <div class="line"></div>
+        </div>
+
+        <main>
+            <div class="main__col--1">
+                <h2>Fitness Overview</h2>
+                <p>Welcome, <span id="usernamePlaceholder"></span>!</p>
+            </div>
+        
+            <div class="main__col--2">
+                <div class="box box--1">
+                    <div class="box--logo">
+                        <span class="iconify" data-inline="false" data-icon="mdi-light:gender-female" style="color: #ffffff; font-size: 40px;"></span>
+                    </div>
+                    <div class="box--content">
+                        <p class="box--title" style="font-size: 15px; padding-bottom: 10px;">Gender & Age</p>
+                        <p class="box--number" style="font-size: 20px;">
+                            <span id="selectedGender"></span>-&nbsp;-&nbsp;<span id="ageRecap"></span>
+                        </p>
+                    </div>
+                </div>
+                
+
+                <div class="db__cell">
+                    <h2 class="db__top-stat" style="color: #9a9a9a94;">Height Progress</h2>
+                    <div class="db__progress">
+                        <div class="db__progress-fill" style="transform:translateX(78%)"></div>
+                    </div>
+                    <div class="db__counter">
+                        <div class="db__counter-value" title="$3,330,050.90" id="height"></div>
+                        <div class="db__counter-label">
+                            <strong id="targetHeight"></strong><br><small style="color: #9a9a9a94;">Target</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="db__cell">
+                    <h2 class="db__top-stat" style="color: #9a9a9a94;">Weight Progress</h2>
+                    <div class="db__progress">
+                        <div class="db__progress-fill" style="transform:translateX(56%)"></div>
+                    </div>
+                    <div class="db__counter">
+                        <div class="db__counter-value" title="$3,330,050.90" id="currentWeight"></div>
+                        <div class="db__counter-label">
+                            <strong id="targetWeight"></strong><br><small style="color:  #9a9a9a94;">Target</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="box box--2">
+                    <div class="box--logo">
+                        <span class="iconify" data-inline="false" data-icon="clarity:group-line" style="color: #ffffff; font-size: 40px"></span>
+                    </div>
+                    <div class="box--content">
+                        <p class="box--title">Employees</p>
+                        <p class="box--number">42</p>
+                    </div>
+                </div>
+    
+                <div class="box box--3">
+                    <div class="box--logo">
+                        <span class="iconify" data-inline="false" data-icon="ant-design:cloud-download-outlined" style="color: #ffffff; font-size: 40px"></span>
+                    </div>
+                    <div class="box--content">
+                        <p class="box--title">Request</p>
+                        <p class="box--number">128</p>
+                    </div>
+                </div> -->
+
+                
+            </div>
+
+            <div class="main__col--3">
+                <div class="graphic--container">
+                    <div class="db__cell">
+                        <h2 class="db__subheading">BMR Results (Calorie/day)</h2>
+                        <div class="db__bubbles">
+                            <div class="db__bubble">
+                                <span class="db__bubble-text">
+                                    Required Intake<br><strong class="db__bubble-value" id="required"></strong><br>per day
+                                </span>
+                            </div>
+                            <div class="db__bubble">
+                                <span class="db__bubble-text">
+                                    Your Intake<br><strong class="db__bubble-value" id="calorieIntake"></strong><br>per day
+                                </span>
+                            </div>
+                            <div class="db__bubble">
+                                <span class="db__bubble-text">
+                                    To Burn<br><strong class="db__bubble-value" id="caloriesToBurnPerDay"></strong><br>per day
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recap--number">
+                    <h3>Details:</h3>
+                    <h5>Age</h5>
+                    <span id="age"></span>
+                    <h5>Current weight</h5>
+                    <span id="weight"></span>
+                    <h5>Current Height</h5>
+                    <span id="heightRecap"></span>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <div class="card--container">
+                <div class="card--container-up">
+                    <h3 class="number-card">Body Mass Index</h3>
+                </div>
+                <div class="card--container-down">
+                    <span class="balance" id="bmi"></span>
+                    <p><span id="bmiCategory"></span></p>
+                </div>
+            </div>
+    
+            <div class="transaction--container">
+                <h3>Feedbacks</h3>
+                <div class="transaction translate">
+                    <div class="logo-grow" style="display: flex; align-items: center; margin-top: 10px;">
+                        <span class="iconify" data-inline="false" data-icon="akar-icons:arrow-up-left" style="color: #ffffff; font-size: 24px" ></span>
+                    </div>
+                    <div class="transaction--infos">
+                        <h6 style="font-size: 17px;">Review </h6>
+                        <p class="recommend"></p>
+                    </div>
+                </div>
+                <div class="transaction translate">
+                    <div class="logo-grow" style="display: flex; align-items: center; margin-top: 10px;">
+                        <span class="iconify" data-inline="false" data-icon="akar-icons:arrow-up-left" style="color: #ffffff; font-size: 24px"></span>
+                    </div>
+                    <div class="transaction--infos">
+                        <h6 style="font-size: 17px;">Result</h6>
+                        <p class="result-box"></p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+
+        const nav = document.querySelector("#nav");
+        const btnMenu = document.querySelector(".menu");
+
+        btnMenu.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+
+        const signOutLink = document.querySelector('.nav-links li:last-child a');
+
+        signOutLink.addEventListener('click', (event) => {
+            const confirmSignOut = confirm('Are you sure you want to sign out?');
+            if (!confirmSignOut) {
+                event.preventDefault(); // Prevent navigating to the login page
+            }
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = localStorage.getItem('signupUsername');
+
+        const usernamePlaceholder = document.getElementById('usernamePlaceholder');
+        if (username) {
+            usernamePlaceholder.textContent = username;
+        }
+
+        const queryParams = new URLSearchParams(window.location.search);
+
+        // Geting values from query parameters
+        const currentWeight = queryParams.get('currentWeight');
+        const targetWeight = queryParams.get('targetWeight');
+        const height= queryParams.get('height');
+        const age = queryParams.get('age');
+        const bmi = queryParams.get('bmi');
+        const calorieIntake = queryParams.get('calorieIntake');
+        const selectedGender = queryParams.get('selectedGender');
+
+        const weight = queryParams.get('currentWeight');
+        const heightRecap= queryParams.get('height');
+        const ageRecap = queryParams.get('age');
+
+        const requiredCalories = selectedGender === 'female' ? 2000 : 2400;
+
+        const targetHeight = parseInt(height) + 5;
+
+        document.getElementById('age').textContent = age + " years ";
+        document.getElementById('bmi').textContent = Math.round(bmi);
+        document.getElementById('currentWeight').textContent = currentWeight + " Kg ";
+        document.getElementById('height').textContent = height + " cm ";
+        document.getElementById('calorieIntake').textContent = Math.round(calorieIntake); 
+        document.getElementById('required').textContent = requiredCalories;
+        document.getElementById('targetHeight').textContent = targetHeight;
+        document.getElementById('targetWeight').textContent = targetWeight;
+        document.getElementById('selectedGender').textContent = selectedGender + "  ";
+
+
+        document.getElementById('weight').textContent = weight + " Kg ";
+        document.getElementById('heightRecap').textContent = heightRecap + " cm ";
+        document.getElementById('ageRecap').textContent = ageRecap;
+
+        
+        const caloriesToBurnPerDayString = queryParams.get('caloriesToBurnPerDay');
+        
+        let caloriesToBurnPerDay;
+        if (caloriesToBurnPerDayString !== null && caloriesToBurnPerDayString !== "") {
+            caloriesToBurnPerDay = Math.round(caloriesToBurnPerDayString);
+        } else {
+            caloriesToBurnPerDay = "N/A"; // Display N/A if the caloriesToBurnPerDay is not available
+        }
+
+        document.getElementById('caloriesToBurnPerDay').innerText = caloriesToBurnPerDay;
+
+        // alert(`caloriesToBurnPerDay: ${caloriesToBurnPerDayString}`);
+        // alert(`height: ${height}`);
+
+
+        let bmiCategory = '';
+        if (bmi < 18.5) {
+            bmiCategory = 'Underweight';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            bmiCategory = 'Normal';
+        } else {
+            bmiCategory = 'Overweight';
+        }
+
+        document.getElementById('bmiCategory').textContent = " " + bmiCategory + " ";
+
+
+        const calorieMessage = document.createElement('p');
+        calorieMessage.classList.add('calorie-message'); 
+
+        if (selectedGender === 'female') {
+            if (calorieIntake >= 1800 && calorieIntake <= 2400) {
+                calorieMessage.textContent = "Your calorie intake is within the recommended range for females.Hurray! Stay healthy!";
+                calorieMessage.style.fontSize = '16px';
+                
+            } else {
+                calorieMessage.textContent = "Your calorie intake is not within the recommended range for females (1800-2400 calories/day). Consider adjusting your intake.";
+                calorieMessage.style.fontSize = '16px';
+    
+            }
+        } else if (selectedGender === 'male') {
+            if (calorieIntake >= 2000 && calorieIntake <= 3200) {
+                calorieMessage.textContent = "Your calorie intake is within the recommended range for males (2000-3200 calories/day). Hurray! Stay healthy!";
+                calorieMessage.style.fontSize = '16px'; 
+                
+            } else {
+                calorieMessage.textContent = "Your calorie intake is not within the recommended range for males (2000-3200 calories/day). Consider adjusting your intake.";
+                calorieMessage.style.fontSize = '16px';
+            }
+        }
+        
+        // Appends the calorie message to recommend
+        const recommend = document.querySelector('.recommend');
+        recommend.appendChild(calorieMessage);
+
+
+        // Calculate the percentage change in calory intake
+        const percentageChange = ((calorieIntake - requiredCalories) / requiredCalories) * 100;
+
+        const percentageChangeMessage = document.createElement('p');
+        percentageChangeMessage.classList.add('percentage-change-message'); 
+
+        if (percentageChange > 0) {
+            percentageChangeMessage.textContent = `Your calorie intake is ${percentageChange.toFixed(2)}% higher than the recommended value.`;
+            percentageChangeMessage.style.fontSize = '18px';
+        
+        } else if (percentageChange < 0) {
+            percentageChangeMessage.textContent = `Your calorie intake is ${Math.abs(percentageChange).toFixed(2)}% lower than the recommended value.`;
+            percentageChangeMessage.style.fontSize = '18px';
+        } else {
+            percentageChangeMessage.textContent = "Your calorie intake is exactly the recommended value. Great job!";
+            percentageChangeMessage.style.fontSize = '18px';
+        }
+
+        // Appends the percentage change message to the result-box
+        const resultBox = document.querySelector('.result-box');
+        resultBox.appendChild(percentageChangeMessage);
+
+    </script>
+</body>
+</html>
